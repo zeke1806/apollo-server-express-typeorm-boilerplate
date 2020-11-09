@@ -1,5 +1,10 @@
+import "dotenv/config";
+import "reflect-metadata";
+
 import { ApolloServer } from "apollo-server-express";
 import compression from "compression";
+import configs from "./configs";
+import { connectDB } from "./libs/typeorm";
 import cors from "cors";
 import { createServer } from "http";
 import depthLimit from "graphql-depth-limit";
@@ -19,6 +24,13 @@ app.use(compression());
 server.applyMiddleware({ app, path: "/graphql" });
 
 const httpServer = createServer(app);
-httpServer.listen({ port: 3000 }, (): void =>
-  console.log(`GraphQL is now running on http://localhost:3000/graphql`)
-);
+
+const bootstrapServer = async () => {
+  await connectDB();
+  await httpServer.listen({ port: configs.server.port }, (): void =>
+    console.log(
+      `GraphQL is now running on http://localhost:${configs.server.port}/graphql`
+    )
+  );
+};
+bootstrapServer();
