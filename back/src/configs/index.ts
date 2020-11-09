@@ -1,5 +1,7 @@
 import { ConnectionOptions } from "typeorm";
 
+const baseUrl = process.env.NODE_ENV === "dev" ? "src" : "dist";
+
 export interface ServerConfigs {
   port: number;
 }
@@ -21,9 +23,9 @@ export default {
     username: process.env.TYPEORM_USERNAME,
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
-    entities: ["dist/**/*.entity{.ts,.js}"],
+    entities: [baseUrl + "/**/*.entity{.ts,.js}"],
     synchronize: process.env.TYPEORM_SYNCHRONIZE === "true",
-    migrations: ["dist/migrations/*{.ts,.js}"],
+    migrations: [baseUrl + "/migrations/*{.ts,.js}"],
     migrationsTableName: "migrations_typeorm",
     migrationsRun: process.env.TYPEORM_MIGRATIONS_RUN === "true",
   },

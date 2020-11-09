@@ -8,9 +8,9 @@ const configsDev: ConnectionOptions = {
   username: "postgres",
   password: "root",
   database: "gestion-evenement",
-  entities: ["dist/**/*.entity{.ts,.js}"],
+  entities: ["src/**/*.entity{.ts,.js}"],
   synchronize: false,
-  migrations: ["dist/migrations/*{.ts,.js}"],
+  migrations: ["src/migrations/*{.ts,.js}"],
   migrationsTableName: "migrations_typeorm",
   migrationsRun: true,
 };
