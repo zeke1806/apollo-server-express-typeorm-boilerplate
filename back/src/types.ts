@@ -13,7 +13,7 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  login: Token;
+  login?: Maybe<Token>;
 };
 
 
@@ -138,7 +138,7 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  login?: Resolver<ResolversTypes['Token'], ParentType, ContextType, RequireFields<MutationLoginArgs, 'username' | 'password'>>;
+  login?: Resolver<Maybe<ResolversTypes['Token']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'username' | 'password'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {

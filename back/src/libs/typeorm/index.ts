@@ -2,6 +2,7 @@ import { PersonEntity } from "../../person/person.entity";
 import { PersonService } from "../../person/person.service";
 import { ResponsableEntity } from "../../responsable/responsable.entity";
 import { ResponsableService } from "../../responsable/responsable.service";
+import bcrypt from "bcrypt";
 import configs from "../../configs";
 import { createConnection } from "typeorm";
 
@@ -20,7 +21,7 @@ async function createAdmin(): Promise<void> {
     admin = new ResponsableEntity();
     admin.person = person;
     admin.username = "admin";
-    admin.password = "admin";
+    admin.password = await bcrypt.hash("admin", 2);
     admin.admin = true;
     await responsableService.save(admin);
     console.log("Creation admin account ok");

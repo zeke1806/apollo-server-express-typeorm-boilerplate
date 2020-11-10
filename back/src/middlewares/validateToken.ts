@@ -1,6 +1,8 @@
 import { validateToken } from "../libs/json-web-token";
 
 export async function validateTokenMiddleware(req: any, res: any, next: any) {
+  if (!req.headers["authorization"]) return next();
+
   const [bearer, accessToken] = req.headers["authorization"].split(" ");
   if (!accessToken || bearer !== "Bearer") return next();
 
