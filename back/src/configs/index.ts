@@ -4,6 +4,7 @@ const baseUrl = process.env.NODE_ENV === "dev" ? "src" : "dist";
 
 export interface ServerConfigs {
   port: number;
+  tokenSecret: string;
 }
 interface Configs {
   server: ServerConfigs;
@@ -13,6 +14,7 @@ interface Configs {
 export default {
   server: {
     port: parseInt(String(process.env.PORT)),
+    tokenSecret: process.env.TOKEN_SECRET,
   },
 
   database: {

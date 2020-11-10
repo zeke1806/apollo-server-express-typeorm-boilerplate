@@ -16,4 +16,8 @@ export class ResponsableService {
   getAdmin(): Promise<ResponsableEntity | undefined> {
     return this.responsableRepository.findOne({ where: { admin: true } });
   }
+
+  getAdminByUsername(username: string): Promise<ResponsableEntity | undefined> {
+    return this.responsableRepository.findOne({ where: { username } });
+  }
 }

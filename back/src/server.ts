@@ -2,10 +2,9 @@ import "dotenv/config";
 import "reflect-metadata";
 
 import { ApolloServer } from "apollo-server-express";
-import compression from "compression";
+import { applyMiddlewares } from "./middlewares";
 import configs from "./configs";
 import { connectDB } from "./libs/typeorm";
-import cors from "cors";
 import { createServer } from "http";
 import depthLimit from "graphql-depth-limit";
 import express from "express";
@@ -16,10 +15,10 @@ const app = express();
 const server = new ApolloServer({
   schema,
   validationRules: [depthLimit(7)],
+  context: ({ req, res }) => ({ req, res }),
 });
 
-app.use("*", cors());
-app.use(compression());
+applyMiddlewares(app);
 
 server.applyMiddleware({ app, path: "/graphql" });
 
