@@ -5,3 +5,4 @@
 4. Env variables
 5. Autoload graphql schema file
 6. JWT token + auth guard example
+7. Typescript types generation based on sdl schema
