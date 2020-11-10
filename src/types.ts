@@ -25,18 +25,19 @@ export type MutationLoginArgs = {
 export type Query = {
   __typename?: 'Query';
   helloWorld: Scalars['String'];
-  responsables: Array<Responsable>;
+  users: Array<User>;
+  me: User;
+};
+
+export type User = {
+  __typename?: 'User';
+  id: Scalars['Float'];
+  username: Scalars['String'];
 };
 
 export type Token = {
   __typename?: 'Token';
-  accessToken: Scalars['String'];
-};
-
-export type Responsable = {
-  __typename?: 'Responsable';
-  id: Scalars['Float'];
-  name: Scalars['String'];
+  token: Scalars['String'];
 };
 
 
@@ -120,9 +121,9 @@ export type ResolversTypes = {
   Mutation: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Query: ResolverTypeWrapper<{}>;
-  Token: ResolverTypeWrapper<Token>;
-  Responsable: ResolverTypeWrapper<Responsable>;
+  User: ResolverTypeWrapper<User>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
+  Token: ResolverTypeWrapper<Token>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
@@ -131,9 +132,9 @@ export type ResolversParentTypes = {
   Mutation: {};
   String: Scalars['String'];
   Query: {};
-  Token: Token;
-  Responsable: Responsable;
+  User: User;
   Float: Scalars['Float'];
+  Token: Token;
   Boolean: Scalars['Boolean'];
 };
 
@@ -143,25 +144,26 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   helloWorld?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  responsables?: Resolver<Array<ResolversTypes['Responsable']>, ParentType, ContextType>;
+  users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
+  me?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
 };
 
-export type TokenResolvers<ContextType = any, ParentType extends ResolversParentTypes['Token'] = ResolversParentTypes['Token']> = {
-  accessToken?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+  id?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type ResponsableResolvers<ContextType = any, ParentType extends ResolversParentTypes['Responsable'] = ResolversParentTypes['Responsable']> = {
-  id?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+export type TokenResolvers<ContextType = any, ParentType extends ResolversParentTypes['Token'] = ResolversParentTypes['Token']> = {
+  token?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
   Token?: TokenResolvers<ContextType>;
-  Responsable?: ResponsableResolvers<ContextType>;
 };
 
 

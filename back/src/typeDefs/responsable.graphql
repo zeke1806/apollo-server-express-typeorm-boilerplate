@@ -1,8 +1,0 @@
-type Token {
-  accessToken: String!
-}
-
-type Responsable {
-  id: Float!
-  name: String!
-}

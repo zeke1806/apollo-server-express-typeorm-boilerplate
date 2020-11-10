@@ -1,26 +1,25 @@
 import { sign, verify } from "jsonwebtoken";
 
-import { ResponsableEntity } from "../../responsable/responsable.entity";
+import { UserEntity } from "../../user/user.entity";
 import configs from "../../configs";
 
 interface Payload {
   id: number;
 }
 export interface AuthPayload {
-  user: Payload;
+  payload: Payload;
   iat: number;
   exp: number;
 }
 
-export function setTokens(responsable: ResponsableEntity) {
+export function setTokens(user: UserEntity) {
   const sevenDays = 60 * 60 * 24 * 7 * 1000;
-  // const fifteenMins = 60 * 15 * 1000;
 
   const payload: Payload = {
-    id: responsable.personId,
+    id: user.id,
   };
 
-  const accessToken = sign({ user: payload }, configs.server.tokenSecret, {
+  const accessToken = sign({ payload }, configs.server.tokenSecret, {
     expiresIn: sevenDays,
   });
 

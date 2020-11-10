@@ -92,7 +92,7 @@
             "deprecationReason": null
           },
           {
-            "name": "responsables",
+            "name": "users",
             "description": null,
             "args": [],
             "type": {
@@ -106,7 +106,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "Responsable",
+                    "name": "User",
                     "ofType": null
                   }
                 }
@@ -114,28 +114,17 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "Token",
-        "description": null,
-        "fields": [
+          },
           {
-            "name": "accessToken",
+            "name": "me",
             "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "OBJECT",
+                "name": "User",
                 "ofType": null
               }
             },
@@ -150,7 +139,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "Responsable",
+        "name": "User",
         "description": null,
         "fields": [
           {
@@ -170,7 +159,7 @@
             "deprecationReason": null
           },
           {
-            "name": "name",
+            "name": "username",
             "description": null,
             "args": [],
             "type": {
@@ -198,6 +187,33 @@
         "fields": null,
         "inputFields": null,
         "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Token",
+        "description": null,
+        "fields": [
+          {
+            "name": "token",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },

@@ -1,4 +1,5 @@
 type Query {
   helloWorld: String!
-  responsables: [Responsable!]!
+  users: [User!]!
+  me: User!
 }
