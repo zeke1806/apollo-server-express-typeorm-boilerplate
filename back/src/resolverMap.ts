@@ -1,9 +1,10 @@
 import { IResolvers } from "graphql-tools";
+
+const helloWorld = (): string => "Hello world";
+
 const resolverMap: IResolvers = {
   Query: {
-    helloWorld(_: void, args: void): string {
-      return `Hello world!`;
-    },
+    helloWorld,
   },
 };
 export default resolverMap;
